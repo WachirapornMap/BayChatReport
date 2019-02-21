@@ -1,4 +1,5 @@
-
+<!DOCTYPE HTML>
+<html>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 
@@ -6,7 +7,7 @@
  <div class="container">
      <div class="row">
       <div class="col-lg-8 mx-auto">
-        
+      <h1 class="h1" align="center">Json Document Details</h1>
      <%= form_for :form, url: search_product_path do |f| %>
    <div class="form-row">
       <div class="col-md-4 mb-3">
@@ -23,6 +24,7 @@
          <div class="form-group">
             <label for="session_id_file">Session ID</label>
             <%= f.file_field :session_id_file, class: 'form-control' %>
+
          </div>
     </div>   
          
@@ -32,10 +34,15 @@
        </div>
      </div>
   </div>
-<%= link_to "   Export CSV", url: report_index_path(format: "csv"),  method: :POST, class:'btn btn-primary' %> 
- <!-- <button type="button" clas="btn btn-lg btn-danger buttons-excel"  tabindex="0" aria-controls="tblData" ><span class="fa fa-file-excel-o"></span> Export to Excel</button>
--->
 
+
+<!-- Export Button -->
+<div style="text-align:right;">
+  <em>Export the table to xls file.</em><br>
+  <button class="btn-xls-export" onclick="exportTableToExcel('tblData_hide')">Export To Excel</button>
+</div><br>
+
+<!-- TABLE SHOW WEB PAGE -->
 <div class="table-responsive">
 <table class ="table table-sm" id ="tblData">
 
@@ -82,5 +89,43 @@
 </table>
 </div>
 
+ <!-- TABLE HIDEN for EXPORT XLS -->
+<div class="tbl_hide" id= "tblData_hide">
+<table id="tblData" class="display" style="width:100%" border="1"><br>
+    <thead>
+        <tr>
+            <th>Session_ID</th>
+            <th>Chat_Input</th>
+            <th>Conversation_Flow_Name</th>
+            <th>Version</th>
+            <th>Norm_Text</th>
+            <th>Semi_Norm_Text</th>
+            <th>Semantic_Tag</th>
+            <th>Intention_Tag</th>
+            <th>Intention_Code</th>
+            <th>Product_List</th>
+        </tr>
+    </thead>
+
+        <% @report.each do |report| %>
+        <tbody>
+        <tr>
+            <td><%= report['nl_result']['request']['session_id']                         if report['nl_result']['request'].present?%></td>
+            <td><%= report['nl_result']['request']['chat_input']                         if report['nl_result']['request'].present?%></td>
+            <td><%= report['nl_result']['request']['ConversationFlowName']               if report['nl_result']['request'].present?%></td>
+            <td><%= report['nl_result']['nlu']['version']                                if report['nl_result']['nlu'].present?%></td>
+            <td><%= report['nl_result']['nlu']['normText']                               if report['nl_result']['nlu'].present?%></td>
+            <td><%= report['nl_result']['nlu']['semiNormText']                           if report['nl_result']['nlu'].present?%></td>
+            <td><%= report['nl_result']['nlu']['prediction']['results']['semanticTag']   if report['nl_result']['nlu']['prediction'].present?%></td>
+            <td><%= report['nl_result']['nlu']['prediction']['results']['intentionTag']  if report['nl_result']['nlu']['prediction'].present?%></td>
+            <td><%= report['nl_result']['nlu']['prediction']['results']['intentionCode'] if report['nl_result']['nlu']['prediction'].present?%></td>
+            <td><%= report['nl_result']['nlu']['prediction']['results']['productList']   if report['nl_result']['nlu']['prediction'].present?%></td>
+        </tr>
+        </tbody>
+        <% end %>
+</table>
+</div>
+
+</html>
 
 
