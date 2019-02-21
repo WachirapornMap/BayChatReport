@@ -1,0 +1,86 @@
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<% no=-1 %>
+ <div class="container">
+     <div class="row">
+      <div class="col-lg-8 mx-auto">
+        
+     <%= form_for :form, url: search_product_path do |f| %>
+   <div class="form-row">
+      <div class="col-md-4 mb-3">
+      <label for="start">Date from:</label>
+          <%= f.date_field :start_date,:value => @start_date, class: 'form-control' %>
+    </div>
+  
+    <div class="col-md-4 mb-3">
+     <label for="end">To:</label>
+          <%= f.date_field :end_date,:value => @end_date, class: 'form-control' %>
+
+    </div>
+     <!-- INPUT for SEARCH-->
+         <div class="form-group">
+            <label for="session_id_file">Session ID</label>
+            <%= f.file_field :session_id_file, class: 'form-control' %>
+         </div>
+    </div>   
+         
+        <%= f.submit "Search Product", url: search_product_path, method: :POST, class:'btn btn-info' %>  
+        
+      <% end %>
+       </div>
+     </div>
+  </div>
+<%= link_to "   Export CSV", url: report_index_path(format: "csv"),  method: :POST, class:'btn btn-primary' %> 
+ <!-- <button type="button" clas="btn btn-lg btn-danger buttons-excel"  tabindex="0" aria-controls="tblData" ><span class="fa fa-file-excel-o"></span> Export to Excel</button>
+-->
+
+<div class="table-responsive">
+<table class ="table table-sm" id ="tblData">
+
+  <tr>
+    <th></th>
+    <th>session_id</th>
+    <th>chat_input</th>
+    <!--<th>ConversationFlowName</th>-->
+
+
+    <th>normText</th>
+    <th>semiNormText</th>
+   <!-- <th>money</th>
+    <th>currency</th>
+    <th>semanticTag</th>
+    <th>intentionTag</th>
+    <th>intentionCode</th>
+    <th>productList</th>--> 
+      <th>Date</th>
+      <th></th> <th></th>
+
+  </tr>
+  <% @report.each do |report| %>
+  <tr>
+  <td></td>
+  <td><%= report["nl_result"]['request']['session_id'] %></td>
+  <td><%= report["nl_result"]['request']['chat_input'] %></td>
+   <!--<td><%= report["nl_result"]['request']['ConversationFlowName'] %></td> -->
+  
+    <td><%= report['nl_result']['nlu']['normText'] %></td>
+    <td><%= report['nl_result']['nlu']['semiNormText'] %></td>
+    <!--<td><%= report['nl_result']['nlu']['keywordExtraction']['money'] if report['nl_result']['nlu']['keywordExtraction'].present?%></td>
+    <td><%= report['nl_result']['nlu']['keywordExtraction']['currency'] if report['nl_result']['nlu']['keywordExtraction'].present?%></td>
+    <td><%= report['nl_result']['nlu']['prediction']['results']['semanticTag'] if report['nl_result']['nlu']['prediction'].present?%></td>
+    <td><%= report['nl_result']['nlu']['prediction']['results']['intentionTag'] if report['nl_result']['nlu']['prediction'].present?%></td>
+    <td><%= report['nl_result']['nlu']['prediction']['results']['intentionCode'] if report['nl_result']['nlu']['prediction'].present?%></td>
+    <td><%= report['nl_result']['nlu']['prediction']['results']['productList'] if report['nl_result']['nlu']['prediction'].present?%></td>
+ -->
+  <td> <%=  @created_at[no+=1] %></td>
+   <td><%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe , report_path(report["nl_result"]['request']['session_id']), :target => '_blank',method: :GET %></td>
+  <td></td>
+  </tr>
+  <% end %>
+</table>
+</div>
+
+
+
