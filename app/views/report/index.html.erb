@@ -26,7 +26,7 @@
          </div>
     </div>   
          
-        <%= f.submit "Search Product", url: search_product_path, method: :POST, class:'btn btn-info' %>  
+        <%= f.submit "Search", url: search_product_path, method: :POST, class:'btn btn-info' %>  
         
       <% end %>
        </div>
@@ -75,11 +75,22 @@
     <td><%= report['nl_result']['nlu']['prediction']['results']['productList'] if report['nl_result']['nlu']['prediction'].present?%></td>
  -->
   <td width="25%"> <%=  @created_at[no+=1] %></td>
-   <td><%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe , report_path(report["nl_result"]['request']['session_id']), :target => '_blank',method: :GET %></td>
+   <td>
+   
+<%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe, report_path(report["nl_result"]['request']['session_id']),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
+   <!-- <%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe , report_path(report["nl_result"]['request']['session_id']), :target => '_blank',method: :GET %> -->
+   </td>
   <td></td>
   </tr>
   <% end %>
 </table>
+</div>
+
+
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
 </div>
 
 

@@ -1,0 +1,11 @@
+<div class="modal-header">
+<h4 class="modal-title" id="myModalLabel">NLU Result</h4>
+  <button type="button" class="close" data-dismiss="modal">x</button>
+  
+</div>
+<div class="modal-body">
+  <pre><%=raw JSON.pretty_unparse(JSON.parse(@data)) %></pre>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary close" data-dismiss="modal">close</button>
+</div>

@@ -5,7 +5,12 @@ class ReportController < ApplicationController
          @results.each do |row|
              @data = row['params_json']
          end
-          render 'show'
+      #    render 'index'
+
+      respond_to do |format|
+        format.html
+        format.js
+     end
 
     end
 
@@ -71,20 +76,6 @@ class ReportController < ApplicationController
         render 'index'
 
     end
-
-    # def export_report
-    #      sql =  "SELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC"
-    #     @results = ActiveRecord::Base.connection.exec_query(sql)
-    #     CSV.generate do |csv|
-    #         @results.each do |row|
-    #             JSON.parse(row["params_json"]).each do |hash|
-    #             csv << hash.values
-    #             end
-    #         end
-    #     end
-
-    #     render'index'
-    # end
 
    
 end
