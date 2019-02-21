@@ -7,7 +7,7 @@
      <div class="row">
       <div class="col-lg-8 mx-auto">
         
-     <%= form_for :form, url: search_product_path do |f| %>
+     <%= form_for :form, url: report_index_path do |f| %>
    <div class="form-row">
       <div class="col-md-4 mb-3">
       <label for="start">Date from:</label>
@@ -26,7 +26,7 @@
          </div>
     </div>   
          
-        <%= f.submit "Search", url: search_product_path, method: :POST, class:'btn btn-info' %>  
+        <%= f.submit "Search", url: report_index_path, method: :POST, class:'btn btn-info' %>  
         
       <% end %>
        </div>
