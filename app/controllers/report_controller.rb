@@ -23,9 +23,9 @@ class ReportController < ApplicationController
            # p JSON.parse(row["params_json"])
                @json_data << JSON.parse(row["params_json"]) 
                 if row['created_at'].blank?
-                     @created_at << row['updated_at'] 
+                     @created_at << row['updated_at'].strftime('%y-%m-%d %H:%M:%S')
                 else
-                     @created_at << row['created_at']
+                     @created_at << row['created_at'].strftime('%y-%m-%d %H:%M:%S')
                 end
             end
         end

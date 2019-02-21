@@ -13175,3 +13175,200 @@ Completed 200 OK in 6657ms (Views: 515.5ms | ActiveRecord: 6129.0ms)
 Completed 200 OK in 5974ms (Views: 99.3ms | ActiveRecord: 5869.9ms)
 
 
+Started GET "/report" for 127.0.0.1 at 2019-02-21 11:25:59 +0700
+  [1m[35m (6.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+  [1m[35m (9.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+Processing by ReportController#index as HTML
+Started GET "/report" for 127.0.0.1 at 2019-02-21 11:26:02 +0700
+  [1m[35m (15.1ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+Processing by ReportController#index as HTML
+  [1m[35mSQL (6787.2ms)[0m  [1m[34mSELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC[0m
+  ↳ app/controllers/report_controller.rb:20
+  Rendering report/index.html.erb within layouts/application
+  Rendered report/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 7122ms (Views: 323.9ms | ActiveRecord: 6787.2ms)
+
+
+  [1m[35mSQL (5797.1ms)[0m  [1m[34mSELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC[0m
+  ↳ app/controllers/report_controller.rb:20
+  Rendering report/index.html.erb within layouts/application
+  Rendered report/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 5893ms (Views: 90.5ms | ActiveRecord: 5797.1ms)
+
+
+Started GET "/report/db8532a3-2816-4d0d-bab8-4d5087e9e378" for 127.0.0.1 at 2019-02-21 11:26:12 +0700
+Processing by ReportController#show as HTML
+  Parameters: {"authenticity_token"=>"Gaxq9Cn1dgmNddTjyygy00O2A+pZrHsdpwqsc+35L6Z5FfegO5NEfdZIfVcGJHyRNY3d9Zu6/sQ85pcCegB7Kw==", "id"=>"db8532a3-2816-4d0d-bab8-4d5087e9e378"}
+  [1m[35mSQL (121.8ms)[0m  [1m[34mSELECT params_json FROM state_transactions WHERE  logging_tag ='db8532a3-2816-4d0d-bab8-4d5087e9e378'[0m
+  ↳ app/controllers/report_controller.rb:4
+  Rendering report/show.html.erb within layouts/application
+  Rendered report/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 184ms (Views: 60.3ms | ActiveRecord: 121.8ms)
+
+
+Started GET "/report/BAY-123456789012" for 127.0.0.1 at 2019-02-21 11:26:20 +0700
+Processing by ReportController#show as HTML
+  Parameters: {"authenticity_token"=>"Gaxq9Cn1dgmNddTjyygy00O2A+pZrHsdpwqsc+35L6Z5FfegO5NEfdZIfVcGJHyRNY3d9Zu6/sQ85pcCegB7Kw==", "id"=>"BAY-123456789012"}
+  [1m[35mSQL (37.1ms)[0m  [1m[34mSELECT params_json FROM state_transactions WHERE  logging_tag ='BAY-123456789012'[0m
+  ↳ app/controllers/report_controller.rb:4
+  Rendering report/show.html.erb within layouts/application
+  Rendered report/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 104ms (Views: 65.6ms | ActiveRecord: 37.1ms)
+
+
+Started GET "/report/db8532a3-2816-4d0d-bab8-4d5087e9e378" for 127.0.0.1 at 2019-02-21 11:26:55 +0700
+Processing by ReportController#show as HTML
+  Parameters: {"authenticity_token"=>"Gaxq9Cn1dgmNddTjyygy00O2A+pZrHsdpwqsc+35L6Z5FfegO5NEfdZIfVcGJHyRNY3d9Zu6/sQ85pcCegB7Kw==", "id"=>"db8532a3-2816-4d0d-bab8-4d5087e9e378"}
+  [1m[35mSQL (22.3ms)[0m  [1m[34mSELECT params_json FROM state_transactions WHERE  logging_tag ='db8532a3-2816-4d0d-bab8-4d5087e9e378'[0m
+  ↳ app/controllers/report_controller.rb:4
+  Rendering report/show.html.erb within layouts/application
+  Rendered report/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 104ms (Views: 78.2ms | ActiveRecord: 22.3ms)
+
+
+Started GET "/report/BAY-123456789013" for 127.0.0.1 at 2019-02-21 11:27:03 +0700
+Processing by ReportController#show as HTML
+  Parameters: {"authenticity_token"=>"Gaxq9Cn1dgmNddTjyygy00O2A+pZrHsdpwqsc+35L6Z5FfegO5NEfdZIfVcGJHyRNY3d9Zu6/sQ85pcCegB7Kw==", "id"=>"BAY-123456789013"}
+  [1m[35mSQL (5.5ms)[0m  [1m[34mSELECT params_json FROM state_transactions WHERE  logging_tag ='BAY-123456789013'[0m
+  ↳ app/controllers/report_controller.rb:4
+  Rendering report/show.html.erb within layouts/application
+  Rendered report/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 73ms (Views: 65.1ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/report" for 127.0.0.1 at 2019-02-21 11:30:11 +0700
+  [1m[35m (3.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+Processing by ReportController#index as HTML
+  [1m[35mSQL (6357.3ms)[0m  [1m[34mSELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC[0m
+  ↳ app/controllers/report_controller.rb:20
+Completed 500 Internal Server Error in 6364ms (ActiveRecord: 6357.3ms)
+
+
+  
+TypeError (no implicit conversion of Time into String):
+  
+app/controllers/report_controller.rb:28:in `parse'
+app/controllers/report_controller.rb:28:in `block in index'
+app/controllers/report_controller.rb:21:in `index'
+Started GET "/report" for 127.0.0.1 at 2019-02-21 11:31:27 +0700
+  [1m[35m (4.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+  [1m[35m (5.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+Processing by ReportController#index as HTML
+  [1m[35mSQL (5979.2ms)[0m  [1m[34mSELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC[0m
+  ↳ app/controllers/report_controller.rb:20
+Completed 500 Internal Server Error in 5985ms (ActiveRecord: 5979.2ms)
+
+
+  
+TypeError (no implicit conversion of Time into String):
+  
+app/controllers/report_controller.rb:28:in `parse'
+app/controllers/report_controller.rb:28:in `block in index'
+app/controllers/report_controller.rb:21:in `index'
+Started GET "/report" for 127.0.0.1 at 2019-02-21 11:32:28 +0700
+  [1m[35m (5.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+  [1m[35m (10.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+Processing by ReportController#index as HTML
+Started GET "/report" for 127.0.0.1 at 2019-02-21 11:32:32 +0700
+  [1m[35m (11.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+Processing by ReportController#index as HTML
+  [1m[35mSQL (6217.3ms)[0m  [1m[34mSELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC[0m
+  ↳ app/controllers/report_controller.rb:20
+  Rendering report/index.html.erb within layouts/application
+  Rendered report/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 6560ms (Views: 328.3ms | ActiveRecord: 6217.3ms)
+
+
+  [1m[35mSQL (6281.0ms)[0m  [1m[34mSELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC[0m
+  ↳ app/controllers/report_controller.rb:20
+  Rendering report/index.html.erb within layouts/application
+  Rendered report/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 6388ms (Views: 102.4ms | ActiveRecord: 6281.0ms)
+
+
+Started GET "/report" for 127.0.0.1 at 2019-02-21 11:35:20 +0700
+  [1m[35m (5.1ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+  [1m[35m (11.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+Processing by ReportController#index as HTML
+  [1m[35mSQL (7195.6ms)[0m  [1m[34mSELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC[0m
+  ↳ app/controllers/report_controller.rb:20
+  Rendering report/index.html.erb within layouts/application
+  Rendered report/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 7556ms (Views: 348.2ms | ActiveRecord: 7195.6ms)
+
+
+Started GET "/report" for 127.0.0.1 at 2019-02-21 11:36:16 +0700
+  [1m[35m (3.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+Processing by ReportController#index as HTML
+  [1m[35mSQL (6155.9ms)[0m  [1m[34mSELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC[0m
+  ↳ app/controllers/report_controller.rb:20
+  Rendering report/index.html.erb within layouts/application
+  Rendered report/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 6516ms (Views: 350.5ms | ActiveRecord: 6155.9ms)
+
+
+Started GET "/report" for 127.0.0.1 at 2019-02-21 11:36:55 +0700
+  [1m[35m (4.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+  [1m[35m (7.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+Processing by ReportController#index as HTML
+  [1m[35mSQL (6073.2ms)[0m  [1m[34mSELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC[0m
+  ↳ app/controllers/report_controller.rb:20
+  Rendering report/index.html.erb within layouts/application
+  Rendered report/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 6435ms (Views: 351.1ms | ActiveRecord: 6073.2ms)
+
+
+Started GET "/report" for 127.0.0.1 at 2019-02-21 11:38:19 +0700
+  [1m[35m (8.9ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+  [1m[35m (4.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+Processing by ReportController#index as HTML
+  [1m[35mSQL (6219.6ms)[0m  [1m[34mSELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC[0m
+  ↳ app/controllers/report_controller.rb:20
+  Rendering report/index.html.erb within layouts/application
+  Rendered report/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 6572ms (Views: 343.2ms | ActiveRecord: 6219.6ms)
+
+
+Started GET "/report" for 127.0.0.1 at 2019-02-21 11:39:00 +0700
+  [1m[35m (3.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/kai2august/.rvm/rubies/ruby-2.5.2/lib/ruby/gems/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13
+Processing by ReportController#index as HTML
+  [1m[35mSQL (6949.2ms)[0m  [1m[34mSELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC[0m
+  ↳ app/controllers/report_controller.rb:20
+  Rendering report/index.html.erb within layouts/application
+  Rendered report/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 7309ms (Views: 350.9ms | ActiveRecord: 6949.2ms)
+
+
+Started GET "/report/db8532a3-2816-4d0d-bab8-4d5087e9e378" for 127.0.0.1 at 2019-02-21 11:39:16 +0700
+Processing by ReportController#show as HTML
+  Parameters: {"authenticity_token"=>"Jp1Qyajy+Zdgq7Kxs05KRh6yB6jNylgmUd9o1aeaplhGJM2dupTL4zuWGwV+QgQEaInZtw/c3f/KM1OkMGPy1Q==", "id"=>"db8532a3-2816-4d0d-bab8-4d5087e9e378"}
+  [1m[35mSQL (4.1ms)[0m  [1m[34mSELECT params_json FROM state_transactions WHERE  logging_tag ='db8532a3-2816-4d0d-bab8-4d5087e9e378'[0m
+  ↳ app/controllers/report_controller.rb:4
+  Rendering report/show.html.erb within layouts/application
+  Rendered report/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 96ms (Views: 90.0ms | ActiveRecord: 4.1ms)
+
+

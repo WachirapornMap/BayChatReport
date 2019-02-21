@@ -61,12 +61,12 @@
   <% @report.each do |report| %>
   <tr>
   <td></td>
-  <td><%= report["nl_result"]['request']['session_id'] %></td>
-  <td><%= report["nl_result"]['request']['chat_input'] %></td>
+  <td width="20%"><%= report["nl_result"]['request']['session_id'] %></td>
+  <td width="25%"><%= report["nl_result"]['request']['chat_input'] %></td>
    <!--<td><%= report["nl_result"]['request']['ConversationFlowName'] %></td> -->
   
-    <td><%= report['nl_result']['nlu']['normText'] %></td>
-    <td><%= report['nl_result']['nlu']['semiNormText'] %></td>
+    <td width="20%"><%= report['nl_result']['nlu']['normText'] %></td>
+    <td width="20%"><%= report['nl_result']['nlu']['semiNormText'] %></td>
     <!--<td><%= report['nl_result']['nlu']['keywordExtraction']['money'] if report['nl_result']['nlu']['keywordExtraction'].present?%></td>
     <td><%= report['nl_result']['nlu']['keywordExtraction']['currency'] if report['nl_result']['nlu']['keywordExtraction'].present?%></td>
     <td><%= report['nl_result']['nlu']['prediction']['results']['semanticTag'] if report['nl_result']['nlu']['prediction'].present?%></td>
@@ -74,7 +74,7 @@
     <td><%= report['nl_result']['nlu']['prediction']['results']['intentionCode'] if report['nl_result']['nlu']['prediction'].present?%></td>
     <td><%= report['nl_result']['nlu']['prediction']['results']['productList'] if report['nl_result']['nlu']['prediction'].present?%></td>
  -->
-  <td> <%=  @created_at[no+=1] %></td>
+  <td width="25%"> <%=  @created_at[no+=1] %></td>
    <td><%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe , report_path(report["nl_result"]['request']['session_id']), :target => '_blank',method: :GET %></td>
   <td></td>
   </tr>
