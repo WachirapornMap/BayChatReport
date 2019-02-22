@@ -3,3 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 @import "bootstrap-datepicker";
+
+
+.btn-xls-export{
+    color: rgb(255, 255, 255);
+    background-color: #00c482;
+    width: 150px;
+    height: 30px;
+}
+
+.tbl_hide{
+    display: none;
+}
+
+.hide_th {
+    display: none;
+    border:solid;
+}
+
+.table-sm{
+//    margin-left: 10%;
+//    margin-right: 10%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.padtbl{
+    padding: 10%;
+}

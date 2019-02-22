@@ -1,4 +1,5 @@
-
+<!DOCTYPE HTML>
+<html>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 
@@ -6,8 +7,10 @@
  <div class="container">
      <div class="row">
       <div class="col-lg-8 mx-auto">
+
         
      <%= form_for :form, url: report_index_path do |f| %>
+
    <div class="form-row">
       <div class="col-md-4 mb-3">
       <label for="start">Date from:</label>
@@ -23,6 +26,7 @@
          <div class="form-group">
             <label for="session_id_file">Session ID</label>
             <%= f.file_field :session_id_file, class: 'form-control' %>
+
          </div>
     </div>   
          
@@ -32,57 +36,72 @@
        </div>
      </div>
   </div>
-<%= link_to "   Export CSV", url: report_index_path(format: "csv"),  method: :POST, class:'btn btn-primary' %> 
- <!-- <button type="button" clas="btn btn-lg btn-danger buttons-excel"  tabindex="0" aria-controls="tblData" ><span class="fa fa-file-excel-o"></span> Export to Excel</button>
--->
-
-<div class="table-responsive">
-<table class ="table table-sm" id ="tblData">
-
-  <tr>
-    <th></th>
-    <th>session_id</th>
-    <th>chat_input</th>
-    <!--<th>ConversationFlowName</th>-->
 
 
-    <th>normText</th>
-    <th>semiNormText</th>
-   <!-- <th>money</th>
-    <th>currency</th>
-    <th>semanticTag</th>
-    <th>intentionTag</th>
-    <th>intentionCode</th>
-    <th>productList</th>--> 
-      <th>Date</th>
-      <th></th> <th></th>
+<!-- Export Button -->
+<div style="text-align:right;">
+  <em>Export the table to xls file.</em><br>
+  <button class="btn-xls-export" onclick="exportTableToExcel('tblData_hide')">Export To Excel</button>
+</div><br>
 
-  </tr>
-  <% @report.each do |report| %>
-  <tr>
-  <td></td>
-  <td width="20%"><%= report["nl_result"]['request']['session_id'] %></td>
-  <td width="25%"><%= report["nl_result"]['request']['chat_input'] %></td>
-   <!--<td><%= report["nl_result"]['request']['ConversationFlowName'] %></td> -->
+<!-- TABLE SHOW WEB PAGE -->
+<div id="table-responsive">
+  <table class ="table table-sm" id ="tblData">
+    <thead border="1">
+      <tr>
+        
+        <th>session_id</th>
+        <th>chat_input</th>
+<!--    <th>ConversationFlowName</th>-->
+
+
+        <th>normText</th>
+        <th>semiNormText</th>
+<!--    <th>money</th>
+        <th>currency</th>
+        <th>semanticTag</th>
+        <th>intentionTag</th>
+        <th>intentionCode</th>
+        <th>productList</th>--> 
+        <th>Date</th>
+        <th class="hide_th"></th>
+      </tr>
+    </thead>
+
+      <tbody>
+      <% @report.each do |report| %>
+      <tr>
+        
+        <td width="20%"><%= report["nl_result"]['request']['session_id'] %></td>
+        <td width="25%"><%= report["nl_result"]['request']['chat_input'] %></td>
+<!--    <td><%= report["nl_result"]['request']['ConversationFlowName'] %></td> -->
   
-    <td width="20%"><%= report['nl_result']['nlu']['normText'] %></td>
-    <td width="20%"><%= report['nl_result']['nlu']['semiNormText'] %></td>
-    <!--<td><%= report['nl_result']['nlu']['keywordExtraction']['money'] if report['nl_result']['nlu']['keywordExtraction'].present?%></td>
-    <td><%= report['nl_result']['nlu']['keywordExtraction']['currency'] if report['nl_result']['nlu']['keywordExtraction'].present?%></td>
-    <td><%= report['nl_result']['nlu']['prediction']['results']['semanticTag'] if report['nl_result']['nlu']['prediction'].present?%></td>
-    <td><%= report['nl_result']['nlu']['prediction']['results']['intentionTag'] if report['nl_result']['nlu']['prediction'].present?%></td>
-    <td><%= report['nl_result']['nlu']['prediction']['results']['intentionCode'] if report['nl_result']['nlu']['prediction'].present?%></td>
-    <td><%= report['nl_result']['nlu']['prediction']['results']['productList'] if report['nl_result']['nlu']['prediction'].present?%></td>
+        <td width="20%"><%= report['nl_result']['nlu']['normText'] %></td>
+        <td width="20%"><%= report['nl_result']['nlu']['semiNormText'] %></td>
+<!--    <td><%= report['nl_result']['nlu']['keywordExtraction']['money'] if report['nl_result']['nlu']['keywordExtraction'].present?%></td>
+        <td><%= report['nl_result']['nlu']['keywordExtraction']['currency'] if report['nl_result']['nlu']['keywordExtraction'].present?%></td>
+        <td><%= report['nl_result']['nlu']['prediction']['results']['semanticTag'] if report['nl_result']['nlu']['prediction'].present?%></td>
+        <td><%= report['nl_result']['nlu']['prediction']['results']['intentionTag'] if report['nl_result']['nlu']['prediction'].present?%></td>
+        <td><%= report['nl_result']['nlu']['prediction']['results']['intentionCode'] if report['nl_result']['nlu']['prediction'].present?%></td>
+        <td><%= report['nl_result']['nlu']['prediction']['results']['productList'] if report['nl_result']['nlu']['prediction'].present?%></td>
  -->
-  <td width="25%"> <%=  @created_at[no+=1] %></td>
-   <td>
-   
-<%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe, report_path(report["nl_result"]['request']['session_id']),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
-   <!-- <%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe , report_path(report["nl_result"]['request']['session_id']), :target => '_blank',method: :GET %> -->
-   </td>
-  <td></td>
-  </tr>
-  <% end %>
+
+        <td width="25%"> <%=  @created_at[no+=1] %></td>
+        <td><%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe , report_path(report["nl_result"]['request']['session_id']), :target => '_blank',method: :GET %></td>
+        
+      </tr>
+      <% end %>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tblData').dataTable();
+    });
+</script>
+<script  src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+
+
+
 </table>
 </div>
 
@@ -93,5 +112,71 @@
   </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- TABLE HIDEN for EXPORT XLS -->
+<div class="tbl_hide" id= "tblData_hide">
+<table id="tblData" class="display" style="width:100%" border="1"><br>
+    <thead>
+        <tr>
+            <th>Session_ID</th>
+            <th>Chat_Input</th>
+            <th>Conversation_Flow_Name</th>
+            <th>Version</th>
+            <th>Norm_Text</th>
+            <th>Semi_Norm_Text</th>
+            <th>Semantic_Tag</th>
+            <th>Intention_Tag</th>
+            <th>Intention_Code</th>
+            <th>Product_List</th>
+        </tr>
+    </thead>
+
+        <tbody>
+        <% @report.each do |report| %>
+        <tr>
+            <td><%= report['nl_result']['request']['session_id']                         if report['nl_result']['request'].present?%></td>
+            <td><%= report['nl_result']['request']['chat_input']                         if report['nl_result']['request'].present?%></td>
+            <td><%= report['nl_result']['request']['ConversationFlowName']               if report['nl_result']['request'].present?%></td>
+            <td><%= report['nl_result']['nlu']['version']                                if report['nl_result']['nlu'].present?%></td>
+            <td><%= report['nl_result']['nlu']['normText']                               if report['nl_result']['nlu'].present?%></td>
+            <td><%= report['nl_result']['nlu']['semiNormText']                           if report['nl_result']['nlu'].present?%></td>
+            <td><%= report['nl_result']['nlu']['prediction']['results']['semanticTag']   if report['nl_result']['nlu']['prediction'].present?%></td>
+            <td><%= report['nl_result']['nlu']['prediction']['results']['intentionTag']  if report['nl_result']['nlu']['prediction'].present?%></td>
+            <td><%= report['nl_result']['nlu']['prediction']['results']['intentionCode'] if report['nl_result']['nlu']['prediction'].present?%></td>
+            <td><%= report['nl_result']['nlu']['prediction']['results']['productList']   if report['nl_result']['nlu']['prediction'].present?%></td>
+        </tr>
+        <% end %>
+        </tbody>
+        
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tblData').dataTable();
+    });
+</script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+
+</div>
+
+</html>
 
 
