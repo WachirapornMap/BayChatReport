@@ -7,8 +7,10 @@
  <div class="container">
      <div class="row">
       <div class="col-lg-8 mx-auto">
-      <h1 class="h1" align="center">Json Document Details</h1>
-     <%= form_for :form, url: search_product_path do |f| %>
+
+        
+     <%= form_for :form, url: report_index_path do |f| %>
+
    <div class="form-row">
       <div class="col-md-4 mb-3">
       <label for="start">Date from:</label>
@@ -28,7 +30,7 @@
          </div>
     </div>   
          
-        <%= f.submit "Search Product", url: search_product_path, method: :POST, class:'btn btn-info' %>  
+        <%= f.submit "Search", url: report_index_path, method: :POST, class:'btn btn-info' %>  
         
       <% end %>
        </div>
@@ -83,6 +85,7 @@
         <td><%= report['nl_result']['nlu']['prediction']['results']['intentionCode'] if report['nl_result']['nlu']['prediction'].present?%></td>
         <td><%= report['nl_result']['nlu']['prediction']['results']['productList'] if report['nl_result']['nlu']['prediction'].present?%></td>
  -->
+
         <td width="25%"> <%=  @created_at[no+=1] %></td>
         <td><%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe , report_path(report["nl_result"]['request']['session_id']), :target => '_blank',method: :GET %></td>
         
@@ -98,7 +101,15 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
 
 
+
 </table>
+</div>
+
+
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
 </div>
 
 
