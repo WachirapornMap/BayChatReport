@@ -48,18 +48,24 @@
      </div>
   </div>
 
-<!-- Export Button 
+<!-- Export Button -->
 <div style="text-align:right;">
   <em>Export the table to xls file.</em><br>
-  <button class="btn-xls-export" onclick="exportTableToExcel('tblData_hide')">Export To Excel</button>
-</div><br>
--->
 
+  <button class="btn-xls-export" onclick="exportTableToExcel('tblData_hide')">Export To Excel</button>
+  
+</div><br>
+
+<%= form_tag(create_job_path, method: :put)  do %> 
+<div>
+  <%= submit_tag 'Create Job', class: "btn btn-warning" %>
+  </div>
 <!-- TABLE SHOW WEB PAGE -->
 <div id="table-responsive">
   <table class ="table table-sm" id ="tblData">
     <thead>
       <tr>
+      <th></th>
         
         <th>session_id</th>
         <th>chat_input</th>
@@ -82,7 +88,7 @@
       <tbody>
       <% @report.each do |report| %>
       <tr>
-        
+        <td><%= check_box_tag 'task_id[]', report["nl_result"]['request']['session_id']%></td>
         <td width="20%"><%= report["nl_result"]['request']['session_id'] %></td>
         <td width="25%"><%= report["nl_result"]['request']['chat_input'] %></td>
 <!--    <td><%= report["nl_result"]['request']['ConversationFlowName'] %></td> -->
@@ -104,14 +110,12 @@
       <% end %>
 
 </table>
+
+<% end %>
 </div>
 
 
-<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content"></div>
-  </div>
-</div>
+
 
 
 
@@ -167,8 +171,12 @@
         
 </table>
 
+</div>
 
-
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
 </div>
 
 </html>

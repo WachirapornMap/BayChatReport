@@ -114,6 +114,32 @@ class ReportController < ApplicationController
         render 'index'
 
     end
+   def createjob
+    if params['task_id'].present?
+         @session_id = Array.new
+        @json_data = Array.new
+        @created_at = []
+        sql =   "SELECT * FROM state_transactions WHERE logging_tag in (#{params['task_id'].inspect[1...-1].gsub('"',"'")}) ORDER BY id DESC"
 
+        @results = ActiveRecord::Base.connection.exec_query(sql)
+        @results.each do |row|
+                 unless row["params_json"].nil?
+                     @json_data << JSON.parse(row["params_json"])
+                        if row['created_at'].blank?
+                         @created_at << row['updated_at'].strftime('%y-%m-%d %H:%M:%S')
+                        else
+                         @created_at << row['created_at'].strftime('%y-%m-%d %H:%M:%S')
+                        end
+                end
+            end
+        @report = @json_data 
+         render 'createjob'
+        else
+            redirect_to action: 'index'
+        end
+    
+    
+   
+   end
    
 end
