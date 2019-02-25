@@ -28,8 +28,8 @@ class ReportController < ApplicationController
          logger.error "Bad file_data: #{@file_data.class.name}: #{@file_data.inspect}"
         end
         if  @txt_session_id.present?
-          @session_id =  @txt_session_id.strip.split(",")
-           sql =   "SELECT * FROM state_transactions WHERE  params_json not like '%asr%' AND (((DATE(created_at) between '#{params[:form][:start_date]}' AND '#{params[:form][:end_date]}') or (DATE(updated_at) between '#{params[:form][:start_date]}'  AND '#{params[:form][:end_date]}'))) AND logging_tag in (#{@session_id.inspect[1...-1].gsub('"',"'")}) ORDER BY id DESC"
+#          @session_id =  @txt_session_id.strip.split(",")
+           sql =   "SELECT * FROM state_transactions WHERE  params_json not like '%asr%' AND (((DATE(created_at) between '#{params[:form][:start_date]}' AND '#{params[:form][:end_date]}') or (DATE(updated_at) between '#{params[:form][:start_date]}'  AND '#{params[:form][:end_date]}'))) AND logging_tag in (#{@txt_session_id}) ORDER BY id DESC"
         else
             sql =   "SELECT * FROM state_transactions WHERE  params_json not like '%asr%' AND ((DATE(created_at) between '#{params[:form][:start_date]}' AND '#{params[:form][:end_date]}') or (DATE(updated_at) between '#{params[:form][:start_date]}'  AND '#{params[:form][:end_date]}')) ORDER BY id DESC"
         end
