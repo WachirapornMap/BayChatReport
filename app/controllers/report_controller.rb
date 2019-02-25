@@ -137,6 +137,9 @@ class ReportController < ApplicationController
         else
             redirect_to action: 'index'
         end
+
+       def editjob
+       end
     
     
    

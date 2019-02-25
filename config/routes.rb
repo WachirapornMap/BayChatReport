@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   # match 'search_product',to: 'report#search', via: :post
    match 'export_report',to: 'report#export', via: :post
    match 'create_job', to: 'report#createjob',via: :put
+
+   match 'edit_job', to: 'report#editjob',via: :get
 end
