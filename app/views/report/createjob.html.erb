@@ -1,0 +1,39 @@
+<% no =-1%>
+<!-- TABLE SHOW WEB PAGE -->
+<div id="table-responsive">
+  <table class ="table table-sm" id ="tblData">
+    <thead border="1">
+      <tr>
+      <th></th>
+        
+        <th>session_id</th>
+        <th>chat_input</th>
+<!--    <th>ConversationFlowName</th>-->
+        <th>normText</th>
+        <th>semiNormText</th>
+        <th>Date</th>
+        <th class="hide_th"></th>
+      </tr>
+    </thead>
+
+      <tbody>
+      <% @report.each do |report| %>
+      <tr>
+         <td><%= check_box_tag 'task_id[]', report["nl_result"]['request']['session_id']%></td>
+        <td width="20%"><%= report["nl_result"]['request']['session_id'] %></td>
+        <td width="25%"><%= report["nl_result"]['request']['chat_input'] %></td>
+        <td width="20%"><%= report['nl_result']['nlu']['normText'] %></td>
+        <td width="20%"><%= report['nl_result']['nlu']['semiNormText'] %></td>
+        <td width="25%"> <%=  @created_at[no+=1] %></td>
+        <td> <%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe, report_path(report["nl_result"]['request']['session_id']),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></td>
+        
+      </tr>
+      <% end %>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tblData').dataTable();
+    });
+</script>
+
+</table>
+</div>
