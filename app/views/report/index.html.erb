@@ -36,7 +36,7 @@
           .prop('checked', this.checked)
       });
     });  
-</script>
+  </script>
 
 </header>
 
@@ -85,8 +85,7 @@
   <table class ="table table-sm" id ="tblData">
     <thead>
       <tr>
-      <th><input type="checkbox" class="checkAll" name="checkAll" /> #</th>
-   
+        <th><input type="checkbox" class="checkAll" name="checkAll" /> #</th>
         <th>session_id</th>
         <th>chat_input</th>
 <!--    <th>ConversationFlowName</th>-->
@@ -108,9 +107,10 @@
       <tbody>
       <% @report.each do |report| %>
       <tr>
-        <td><%= check_box_tag 'task_id[]', report["nl_result"]['request']['session_id'], name:'check' %></td>
+        <td><input type="checkbox"  name="check" value="report['nl_result']['request']['session_id']"/></td>
+<!--        <td width="5%"><%= check_box_tag 'task_id[]', report['nl_result']['request']['session_id'], name:'check' %></td> -->
         <td width="20%"><%= report["nl_result"]['request']['session_id'] %></td>
-        <td width="25%"><%= report["nl_result"]['request']['chat_input'] %></td>
+        <td width="22%"><%= report["nl_result"]['request']['chat_input'] %></td>
 <!--    <td><%= report["nl_result"]['request']['ConversationFlowName'] %></td> -->
   
         <td width="20%"><%= report['nl_result']['nlu']['normText'] %></td>
@@ -124,7 +124,7 @@
  -->
 
         <td width="25%"> <%=  @created_at[no+=1] %></td>
-        <td><%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe, report_path(report["nl_result"]['request']['session_id']),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></td>
+        <td><%= link_to '<i class="fa fa-file" aria-hidden="true"></i>'.html_safe, report_path(report["nl_result"]['request']['session_id']),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></td>
         
       </tr>
       <% end %>

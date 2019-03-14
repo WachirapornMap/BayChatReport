@@ -1,4 +1,4 @@
-function exportTableToExcel(tblData, filename = 'report-xls001'){
+function exportTableToExcel(tblData, filename = 'Report-01'){
                 var downloadLink;
                 var dataType = 'application/vnd.ms-excel';
                 var tableSelect = document.getElementById(tblData);
