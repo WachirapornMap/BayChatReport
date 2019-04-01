@@ -28,7 +28,7 @@
         $('#tblData').dataTable();
     });
   </script>
-
+<!--
   <script type="text/javascript">
     $(document).ready(function () {
       $('.checkAll').on('click', function () {
@@ -37,7 +37,7 @@
       });
     });  
   </script>
-
+-->
 </header>
 
 <% no=-1 %>
@@ -74,31 +74,15 @@
      </div>
   </div>
 
-
-<%= form_tag(create_job_path, method: :put)  do %> 
-  <div>
-    <%= submit_tag 'Create Job', class: "btn btn-warning" %>
-  </div>
-
 <!-- TABLE SHOW WEB PAGE -->
 <div id="table-responsive">
   <table class ="table table-sm" id ="tblData">
     <thead>
       <tr>
-        <th><input type="checkbox" class="checkAll" name="checkAll" /> #</th>
         <th>session_id</th>
         <th>chat_input</th>
-<!--    <th>ConversationFlowName</th>-->
-
-
         <th>normText</th>
         <th>semiNormText</th>
-<!--    <th>money</th>
-        <th>currency</th>
-        <th>semanticTag</th>
-        <th>intentionTag</th>
-        <th>intentionCode</th>
-        <th>productList</th>--> 
         <th>Date (yy-mm-dd)</th>
         <th class="hide_th"></th>
       </tr>
@@ -107,49 +91,18 @@
       <tbody>
       <% @report.each do |report| %>
       <tr>
-        <td><input type="checkbox"  name="check" value="report['nl_result']['request']['session_id']"/></td>
-<!--        <td width="5%"><%= check_box_tag 'task_id[]', report['nl_result']['request']['session_id'], name:'check' %></td> -->
         <td width="20%"><%= report["nl_result"]['request']['session_id'] %></td>
-        <td width="22%"><%= report["nl_result"]['request']['chat_input'] %></td>
-<!--    <td><%= report["nl_result"]['request']['ConversationFlowName'] %></td> -->
-  
+        <td width="20%"><%= report["nl_result"]['request']['chat_input'] %></td>
         <td width="20%"><%= report['nl_result']['nlu']['normText'] %></td>
         <td width="20%"><%= report['nl_result']['nlu']['semiNormText'] %></td>
-<!--    <td><%= report['nl_result']['nlu']['keywordExtraction']['money'] if report['nl_result']['nlu']['keywordExtraction'].present?%></td>
-        <td><%= report['nl_result']['nlu']['keywordExtraction']['currency'] if report['nl_result']['nlu']['keywordExtraction'].present?%></td>
-        <td><%= report['nl_result']['nlu']['prediction']['results']['semanticTag'] if report['nl_result']['nlu']['prediction'].present?%></td>
-        <td><%= report['nl_result']['nlu']['prediction']['results']['intentionTag'] if report['nl_result']['nlu']['prediction'].present?%></td>
-        <td><%= report['nl_result']['nlu']['prediction']['results']['intentionCode'] if report['nl_result']['nlu']['prediction'].present?%></td>
-        <td><%= report['nl_result']['nlu']['prediction']['results']['productList'] if report['nl_result']['nlu']['prediction'].present?%></td>
- -->
-
-        <td width="25%"> <%=  @created_at[no+=1] %></td>
+        <td width="20%"> <%=  @created_at[no+=1] %></td>
         <td><%= link_to '<i class="fa fa-file" aria-hidden="true"></i>'.html_safe, report_path(report["nl_result"]['request']['session_id']),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></td>
         
       </tr>
       <% end %>
 
 </table>
-
-<% end %>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
