@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_15_030132) do
+ActiveRecord::Schema.define(version: 2017_12_25_035313) do
 
   create_table "TRAN_MESSAGELOG", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "CallUUID", limit: 50, null: false
@@ -340,6 +340,7 @@ ActiveRecord::Schema.define(version: 2019_02_15_030132) do
     t.string "products"
     t.integer "intention_id"
     t.string "semantic_tags_en"
+    t.string "intention_code", limit: 5
     t.index ["confirm_with_product"], name: "index_semantics_on_confirm_with_product"
     t.index ["intention_id"], name: "index_semantics_on_intention_id"
   end
@@ -581,5 +582,4 @@ ActiveRecord::Schema.define(version: 2019_02_15_030132) do
     t.index ["unique_utterance_id"], name: "index_utterance_logs_on_unique_utterance_id"
   end
 
-  add_foreign_key "semantics", "intentions"
 end
