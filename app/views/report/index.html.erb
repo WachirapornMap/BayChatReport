@@ -96,7 +96,7 @@
         <td width="20%"><%= report['nl_result']['nlu']['normText'] %></td>
         <td width="20%"><%= report['nl_result']['nlu']['semiNormText'] %></td>
         <td width="20%"> <%=  @created_at[no+=1] %></td>
-        <td><%= link_to '<i class="fa fa-file" aria-hidden="true"></i>'.html_safe, report_path(report["nl_result"]['request']['session_id']),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></td>
+        <td><%= link_to '<i class="fa fa-file" aria-hidden="true"></i>'.html_safe, report_path(@id[no]),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></td>
         
       </tr>
       <% end %>

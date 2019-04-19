@@ -1,6 +1,6 @@
 class ReportController < ApplicationController
     def show
-         sql =  "SELECT params_json FROM state_transactions WHERE  logging_tag ='#{params[:id]}'"
+         sql =  "SELECT params_json FROM state_transactions WHERE  id ='#{params[:id]}'"
         @results = ActiveRecord::Base.connection.exec_query(sql)
          @results.each do |row|
              @data = row['params_json']
@@ -17,6 +17,7 @@ class ReportController < ApplicationController
     def create
         @session_id = Array.new
         @json_data = Array.new
+        @id = Array.new
         @created_at = []
         @file_data = params[:form][:session_id_file]
         if @file_data.respond_to?(:read)
@@ -39,6 +40,7 @@ class ReportController < ApplicationController
         @results.each do |row|
                  unless row["params_json"].nil?
                      @json_data << JSON.parse(row["params_json"])
+                       @id << row["id"]
                         if row['created_at'].blank?
                          @created_at << row['updated_at'].strftime('%y-%m-%d %H:%M:%S')
                         else
@@ -56,13 +58,15 @@ class ReportController < ApplicationController
        @start_date = Time.now.strftime('%Y-%m-%d')
        @end_date = Time.now.strftime('%Y-%m-%d')
         @json_data = Array.new
+        @id = Array.new
         @created_at = []
-        sql =  "SELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC"
+       sql =   "SELECT * FROM state_transactions WHERE  params_json not like '%asr%' AND ((DATE(created_at) = '#{@start_date}') or (DATE(updated_at) = '#{@start_date}')) ORDER BY id DESC"
+        #sql =  "SELECT * FROM state_transactions WHERE  params_json not like '%asr%' ORDER BY id DESC"
         @results = ActiveRecord::Base.connection.exec_query(sql)
         @results.each do |row|
            unless row["params_json"].nil?
-           # p JSON.parse(row["params_json"])
-               @json_data << JSON.parse(row["params_json"]) 
+               @json_data << JSON.parse(row["params_json"])
+                @id << row["id"]
                 if row['created_at'].blank?
                      @created_at << row['updated_at'].strftime('%y-%m-%d %H:%M:%S')
                 else
